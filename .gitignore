@@ -10,3 +10,8 @@
 # ch05 saved_model
 Chapter05/saved_model/
 Chapter05/MNIST_model/
+
+# ch06 
+Chapter06/LeNet5_model/
+Chapter06/train_dir/
+
