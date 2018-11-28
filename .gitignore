@@ -15,3 +15,9 @@ Chapter05/MNIST_model/
 Chapter06/LeNet5_model/
 Chapter06/train_dir/
 
+# ch07
+Chapter07/*.tfrecords
+
+# ch11
+Chapter11/log/
+
