@@ -24,11 +24,11 @@ MODEL_NAME = "model.ckpt"
 # 的方式从TFRecord中读取数据。于是在这里提供的数据文件路径为将MNIST训练数据
 # 转化为TFRecords格式之后的路径。如何将MNIST数据转化为TFRecord格式在第7章中有
 # 详细介绍，这里不再赘述。
-DATA_PATH = "output.tfrecords" 
+DATA_PATH = "../Chapter07/output.tfrecords"
 
 # 定义输入队列得到训练数据，具体细节可以参考第7章。
 def get_input():
-    dataset = tf.contrib.data.TFRecordDataset([DATA_PATH])
+    dataset = tf.data.TFRecordDataset([DATA_PATH])
 
     # 定义数据解析格式。
     def parser(record):
@@ -83,6 +83,7 @@ def average_gradients(tower_grads):
         # 计算所有GPU上的梯度平均值。
         grads = []
         for g, _ in grad_and_vars:
+            # batch
             expanded_g = tf.expand_dims(g, 0)
             grads.append(expanded_g)
         grad = tf.concat(grads, 0)
@@ -140,7 +141,7 @@ def main(argv=None):
         variables_averages_op = variable_averages.apply(variables_to_average)
         # 每一轮迭代需要更新变量的取值并更新变量的滑动平均值。
         train_op = tf.group(apply_gradient_op, variables_averages_op)
-
+        # model.ckpt
         saver = tf.train.Saver()
         summary_op = tf.summary.merge_all()        
         init = tf.global_variables_initializer()

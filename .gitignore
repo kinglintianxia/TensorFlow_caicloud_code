@@ -21,3 +21,6 @@ Chapter07/*.tfrecords
 # ch11
 Chapter11/log/
 
+# ch12
+Chapter12/logs_and_models
+
